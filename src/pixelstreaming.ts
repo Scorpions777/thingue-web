@@ -9,9 +9,7 @@ async function playerUrlBuilder() {
             // playerCount: -1
         }),
     })
-    if (!result.ok) {
-        throw new Error("网络请求失败");
-    }
+    if (!result.ok) throw new Error("网络请求失败");
     const response = await result.json()
     if (response.code === 200) {
         const origin = window.location.origin.replace('http://', 'ws://').replace('https://', 'wss://');
