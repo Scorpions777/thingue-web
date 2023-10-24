@@ -32,7 +32,7 @@ function createStream() {
             OfferToReceive: true,
             HoveringMouse: true,
             StartVideoMuted: true,
-            MatchViewportRes: false,
+            MatchViewportRes: true,
         },
         useUrlParams: true
     });
@@ -42,16 +42,18 @@ function createStream() {
     })
 
     // 监听UE发过来的数据
-    stream.addResponseEventListener("thingjs", function (response) {
+    stream.addResponseEventListener("user_handler", function (response) {
         console.log(response)
     })
+
+    // 移除事件监听
+    // stream.removeResponseEventListener("user_handler")
 
 }
 
 // 向UE发送数据
 function sendUserCommand(param: any) {
     const uuid = uuidv4();
-    console.log(param)
     stream.emitUIInteraction({
         type: "UserCommand",
         uuid,
