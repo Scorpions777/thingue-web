@@ -1,51 +1,31 @@
-import {Config, Logger, PixelStreaming} from "@thingue/lib-pixelstreamingfrontend";
+import {Config, Logger, PixelStreaming} from "@epicgames-ps/lib-pixelstreamingfrontend-ue5.3";
 import {v4 as uuidv4} from "uuid";
-
-async function playerUrlBuilder() {
-    const result = await fetch("/api/instance/ticketSelect", {
-        method: 'POST',
-        headers: new Headers([["Content-Type", "application/json"]]),
-        body: JSON.stringify({
-            playerCount: -1
-        }),
-    })
-    if (!result.ok) {
-        throw new Error("网络请求失败");
-    }
-    const response = await result.json()
-    if (response.code === 200) {
-        const origin = window.location.origin.replace('http://', 'ws://').replace('https://', 'wss://');
-        return `${origin}/ws/player/${response.data.ticket}`;
-    } else {
-        throw new Error(response.msg);
-    }
-}
 
 let stream: PixelStreaming;
 
 function createStream() {
-    // Logger.SetLoggerVerbosity(-1)
+    Logger.SetLoggerVerbosity(-1)
     const config = new Config({
         initialSettings: {
             AutoPlayVideo: true,
             AutoConnect: true,
-            OfferToReceive: true,
             HoveringMouse: true,
             StartVideoMuted: true,
             MatchViewportRes: true,
+            ss: 'ws://127.0.0.1:8877/ws/player/test'
         },
         useUrlParams: true
     });
 
-    stream = new PixelStreaming(config, {
-        playerUrlBuilder: playerUrlBuilder
-    })
-
+    stream = new PixelStreaming(config, {})
+    
     // 监听UE发过来的数据
-    stream.addResponseEventListener("thingjs", function (response) {
+    stream.addResponseEventListener("abcd", function (response) {
         console.log(response)
     })
 
+    // 移除监听
+    stream.removeResponseEventListener("abcd")
 }
 
 // 向UE发送数据
