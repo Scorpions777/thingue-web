@@ -6,7 +6,7 @@ async function playerUrlBuilder() {
         method: 'POST',
         headers: new Headers([["Content-Type", "application/json"]]),
         body: JSON.stringify({
-            playerCount: -1
+            // playerCount: -1
         }),
     })
     if (!result.ok) {
@@ -24,7 +24,7 @@ async function playerUrlBuilder() {
 let stream: PixelStreaming;
 
 function createStream() {
-    // Logger.SetLoggerVerbosity(-1)
+    Logger.SetLoggerVerbosity(-1)
     const config = new Config({
         initialSettings: {
             AutoPlayVideo: true,
@@ -32,7 +32,7 @@ function createStream() {
             OfferToReceive: true,
             HoveringMouse: true,
             StartVideoMuted: true,
-            MatchViewportRes: true,
+            MatchViewportRes: false,
         },
         useUrlParams: true
     });
