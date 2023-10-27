@@ -1,10 +1,10 @@
-import {Config, Logger, PixelStreaming} from "@epicgames-ps/lib-pixelstreamingfrontend-ue5.3";
+import {Config, Logger, PixelStreaming} from "@epicgames-ps/lib-pixelstreamingfrontend-ue5.4";
 import {v4 as uuidv4} from "uuid";
 
 let stream: PixelStreaming;
 
 function createStream() {
-    Logger.SetLoggerVerbosity(-1)
+    // Logger.SetLoggerVerbosity(-1)
     const config = new Config({
         initialSettings: {
             AutoPlayVideo: true,

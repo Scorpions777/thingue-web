@@ -4,9 +4,8 @@ import OverlayPanel from '@/components/OverlayPanel.vue'
 </script>
 
 <template>
-  <overlay-panel/>
-<!--  <stream-player/>-->
+  <overlay-panel />
+  <stream-player />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

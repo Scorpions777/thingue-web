@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Application, PixelStreamingApplicationStyle} from '@epicgames-ps/lib-pixelstreamingfrontend-ui-ue5.3';
+import {Application, PixelStreamingApplicationStyle} from '@epicgames-ps/lib-pixelstreamingfrontend-ui-ue5.4';
 import {stream} from "@/pixelstreaming";
 import {onMounted, ref} from "vue";
 
