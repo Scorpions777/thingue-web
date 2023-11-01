@@ -12,8 +12,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@thingue/lib-pixelstreamingfrontend": "^0.0.3",
-    "@thingue/lib-pixelstreamingfrontend-ui": "^0.0.3",
+    "@thingue/lib-pixelstreamingfrontend": "^0.0.4",
+    "@thingue/lib-pixelstreamingfrontend-ui": "^0.0.4",
     "uuid": "^9.0.1",
     "vue": "^3.3.4"
   },
