@@ -1,12 +1,17 @@
 import {Config, Logger, PixelStreaming} from "@thingue/lib-pixelstreamingfrontend";
 import {v4 as uuidv4} from "uuid";
 
+const config = {
+    instanceName: ""
+}
+
 async function playerUrlBuilder() {
     const result = await fetch("/api/instance/ticketSelect", {
         method: 'POST',
         headers: new Headers([["Content-Type", "application/json"]]),
         body: JSON.stringify({
-            // playerCount: -1
+            name: config.instanceName ? config.instanceName : null,
+            playerCount: -1
         }),
     })
     if (!result.ok) throw new Error("网络请求失败");
@@ -61,6 +66,6 @@ function sendUserCommand(param: any) {
 }
 
 export {
-    stream, createStream, sendUserCommand
+    stream, config, createStream, sendUserCommand
 }
 
