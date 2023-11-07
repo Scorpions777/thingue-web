@@ -9,9 +9,7 @@ onMounted(async () => {
   const result = await fetch("/api/instance/instanceSelect", {
     method: 'POST',
     headers: new Headers([["Content-Type", "application/json"]]),
-    body: JSON.stringify({
-      playerCount: -1
-    }),
+    body: JSON.stringify({}),
   })
   const response = await result.json()
   if (response.code === 200) {
@@ -36,7 +34,6 @@ function switchInstance(name: string) {
 <template>
   <div class="overlay">
     <button @click="sendUserCommand({data:'test'})">测试发送消息</button>
-    <button @click="switchInstance()">测试切换实例</button>
     <select ref="InstanceSelect">
       <option v-for="item in instanceList" :key="item.sid" :value="item.name">{{ item.name }}</option>
     </select>

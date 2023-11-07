@@ -10,8 +10,7 @@ async function playerUrlBuilder() {
         method: 'POST',
         headers: new Headers([["Content-Type", "application/json"]]),
         body: JSON.stringify({
-            name: config.instanceName ? config.instanceName : null,
-            playerCount: -1
+            name: config.instanceName ? config.instanceName : undefined,
         }),
     })
     if (!result.ok) throw new Error("网络请求失败");
